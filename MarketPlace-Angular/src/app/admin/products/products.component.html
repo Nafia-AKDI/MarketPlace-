@@ -1,0 +1,310 @@
+<div style="padding:2%;">
+    <div class="card card-primary card-outline">
+        <div class="card-header">
+            <h3 class="card-title">Products</h3>
+
+            <div class="card-tools">
+                <div class="input-group input-group-sm">
+                    <input #inputForSearch (keyup)="search(inputForSearch.value)" type="text" class="form-control" placeholder="Search Products">
+                    <div class="input-group-append">
+                        <div class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-tools -->
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body p-0">
+            <div class="mailbox-controls">
+                <button type="button" data-bs-toggle="modal" data-bs-target="#AddModal" class="btn btn-default btn-sm"><i class="fas fa-plus-circle"></i>Add new product</button>
+                <!-- Check all button -->
+                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
+                </button>
+                <div class="btn-group">
+
+                    <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
+                </div>
+                <!-- /.btn-group -->
+                <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
+                <div class="float-right">
+                    1-50/200
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-sm"><i
+                                class="fas fa-chevron-left"></i></button>
+                        <button type="button" class="btn btn-default btn-sm"><i
+                                class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <!-- /.btn-group -->
+                </div>
+                <!-- /.float-right -->
+            </div>
+            <div class="table-responsive mailbox-messages">
+                <table class="table table-hover table-striped">
+                    <tbody>
+                        <tr>
+                            <th>Image</th>
+                            <th>Nom</th>
+                            <th>Categorie</th>
+                            <th>Marque</th>
+                            <th>Prix</th>
+                            <th>Quantite</th>
+                            <th>Description</th>
+                            <th></th>
+                        </tr>
+                        <tr *ngFor="let p of products">
+                            <td><img src="{{p.image}}" style="width:50px;height: 50px;"> </td>
+                            <td>{{p.nom}}</td>
+                            <td>{{p.categorie}}</td>
+                            <td>{{p.marque}}</td>
+                            <td>{{p.prix }}</td>
+                            <td>{{p.quantite }}</td>
+                            <td>{{p.description |slice:0:20}}</td>
+                            <td>
+                                <button type="button" class="btn btn-default btn-sm"><i (click)="selectForDelete(p.id)" data-bs-toggle="modal" data-bs-target="#DeleteModal" class="fas fa-trash"></i></button>
+                                <button type="button" class="btn btn-default btn-sm"><i  (click)="SelectForUpdate(p.id)" data-bs-toggle="modal" data-bs-target="#UpdateModal" class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-default btn-sm"><i (click)="SelectForShow(p.id)" data-bs-toggle="modal" data-bs-target="#ShowModal" class="fas fa-eye"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- /.table -->
+            </div>
+            <!-- /.mail-box-messages -->
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer p-0">
+            <div class="mailbox-controls">
+                <!-- Check all button -->
+                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
+                </button>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
+                </div>
+                <!-- /.btn-group -->
+                <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
+                <div class="float-right">
+                    1-50/200
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-sm"><i
+                                class="fas fa-chevron-left"></i></button>
+                        <button type="button" class="btn btn-default btn-sm"><i
+                                class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <!-- /.btn-group -->
+                </div>
+                <!-- /.float-right -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Model for add product-->
+<div class="modal fade" id="AddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img class="img-thumbnail" id="AddEmpImage" style="width:100px; height:100px ;" alt="">
+                        </div>
+                        <div class="col-md-9">
+                            <input id="image" type="file" style="margin-left:10px ;" (change)="onSelect($event)" accept="image/">
+                        </div>
+                    </div> <br>
+                    <label>Nom: </label>
+                    <div class="row"><input id="nom" class="form-control"></div>
+                    <div class="row">
+
+
+                        <div class="col">
+                            <label>Categorie: </label>
+                            <select class="form-control" id="categorie">
+                     <option *ngFor="let c of categories" value="{{c.nom}}">{{c.nom}}</option>
+                    
+                       </select>
+                        </div>
+
+                        <div class="col">
+                            <label>Marque: </label>
+                            <select class="form-control" id="marque">
+                                <option *ngFor="let m of marques" value="{{m.nom}}">{{m.nom}}</option>
+                </select>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label>Prix: </label>
+
+                            <input type="number" id="prix" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label>Quantité: </label>
+                            <input type="number" id="quantite" class="form-control">
+
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label>Description: </label>
+                        <textarea id="description" class="form-control" style="height:100px ;"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="add()">Add Product</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Model for update product-->
+<div class="modal fade" id="UpdateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img class="img-thumbnail" id="UpdateImage" style="width:70px; height:70px ;" src="./assets/1.png" alt="">
+                        </div>
+                        <div class="col-md-9">
+                        </div>
+                    </div> <br>
+                    <label>Nom: </label>
+                    <div class="row"><input id="unom" class="form-control"></div>
+                    <div class="row">
+
+                        <div class="col">
+                            <label>Categorie: </label>
+                            <select class="form-control" id="marque">
+                                <option *ngFor="let m of categories" value="{{m.nom}}">{{m.nom}}</option>
+                </select></div>
+                        <div class="col">
+                            <label>Marque: </label>
+
+                            <select class="form-control" id="marque">
+                                    <option *ngFor="let m of marques" value="{{m.nom}}">{{m.nom}}</option>
+                   
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>Prix: </label>
+
+                                <input type="number" id="uprix" class="form-control">
+                            </div>
+                            <div class="col">
+                                <label>Quantité: </label>
+                                <input type="number" id="uquantite" class="form-control">
+
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label>Description: </label>
+                            <textarea id="udescription" class="form-control" style="height:100px ;"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="update()">Update Product</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Model for delete product-->
+<div class="modal fade" id="DeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Deleting Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h2>are you want to delete this product ?</h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteConform()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Model for show details product-->
+<div class="modal fade" id="ShowModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Product Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img class="img-thumbnail" id="ShowImage" style="width:70px; height:70px ;" src="./assets/1.png" alt="">
+                        </div>
+                        <div class="col-md-9">
+
+
+                        </div>
+                    </div> <br>
+                    <label>Nom: </label>
+                    <div class="row"><input disabled id="snom" class="form-control"></div>
+                    <div class="row">
+
+
+                        <div class="col">
+                            <label>Categorie: </label>
+                            <select class="form-control" disabled id="scategorie">
+                        <option id="oldcategorie" value="Nike"></option>
+                     <option value="T-shurt">T-shurt</option>
+                     <option value="Spadrines">Spadrines</option>
+                 </select></div>
+
+                        <div class="col">
+                            <label>Marque: </label>
+                            <select class="form-control" disabled id="smarque">
+                    <option id="oldmarque" ></option>
+                    <option value="Nike">Nike</option>
+                    <option value="Addidas">Addidas</option>
+                </select>
+                        </div>
+                        <div class="col">
+                            <label>Prix: </label>
+
+                            <input type="number" disabled id="sprix" class="form-control"></div>
+                    </div>
+                    <div class="row">
+                        <label>Description: </label>
+                        <textarea disabled id="sdescription" class="form-control" style="height:100px ;"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Exit</button>
+
+            </div>
+        </div>
+    </div>
+</div>

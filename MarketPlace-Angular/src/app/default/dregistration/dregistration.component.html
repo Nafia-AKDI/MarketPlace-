@@ -1,0 +1,26 @@
+<div class="login-box">
+    <h2>Register</h2>
+    <form>
+        <div class="user-box">
+            <input type="text" [(ngModel)]="name" name="name" required=" ">
+            <label> Name  </label>
+        </div>
+        <div class="user-box ">
+            <input type="text " [(ngModel)]="email" name="email " required=" ">
+            <label> Email </label>
+        </div>
+        <div class="user-box ">
+            <input type="password " [(ngModel)]="password" name="password " required=" ">
+            <label>Password</label>
+            <div class="user-box ">
+                <input type="password " [(ngModel)]="passwordconfirmation" name="passwordconfirmation " required=" ">
+                <label> Confirmer Password</label>
+            </div>
+            <a (click)="register() ">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>Register
+            </a>
+
+        </div>

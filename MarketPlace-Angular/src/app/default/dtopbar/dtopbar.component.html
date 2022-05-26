@@ -1,0 +1,68 @@
+<!-- header section starts  -->
+
+<header id="header" class="fixed-top">
+
+    <div class="fas fa-bars"></div>
+
+    <a [routerLink]="['/']" class="logo"><i class="fa-solid fa-bag-shopping"></i>
+        <h1>Market Place</h1>
+        </a>
+    <div class="left">
+        <div class="search-container">
+            <label for="search" class="fas fa-search"></label>
+            <input type="search" placeholder="search" id="search">
+        </div>
+
+        <a (click)="verifier()" class="btn-btn" class=" logo ">
+            <i class="fa" style="font-size:24px">&#xf07a;</i>
+            <span class='badge badge-warning' id='lblCartCount'>{{np}} </span>
+        </a>
+
+        <a *ngIf="!isAuth" [routerLink]="['/login']" class="btn-btn" class=" logo ">
+            <i class="fa-solid fa-user">
+            </i>
+        </a>
+        <div *ngIf="isAuth" class="drp ">
+            <button>{{nom}}</button>
+            <div class="drp-content ">
+                <a (click)="logout()">logout</a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar ">
+        <ul>
+            <li><a href="#home">home</a></li>
+            <li><a href="#product ">product</a></li>
+            <li><a href="#review ">review</a></li>
+            <li><a href="#offer ">offer</a></li>
+            <li>
+                <div class="dropdown ">
+                    <a class="nav-link dropdown-toggle " href="# " id="navbarDropdown " role="button " data-bs-toggle="dropdown " aria-expanded="false ">
+                        Categories
+                      </a>
+                    <div class="dropdown-content ">
+                        <a (click)="fc( 'shirts') ">Shirts</a>
+                        <a (click)="fc( 'smartphones') ">Smartphone</a>
+                        <a (click)="fc( 'watches') ">Watches</a>
+                        <a (click)="fc( 'shoes') ">Shoes</a>
+                    </div>
+                </div>
+                <li>
+                    <div class="dropdown ">
+                        <a class="nav-link dropdown-toggle " href="# " id="navbarDropdown " role="button " data-bs-toggle="dropdown " aria-expanded="false ">
+                           Brands
+                          </a>
+                        <div class="dropdown-content ">
+                            <a href="# ">Link 1</a>
+                            <a href="# ">Link 2</a>
+                            <a href="# ">Link 3</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#newsletter ">newsletter</a></li>
+        </ul>
+    </nav>
+
+
+</header>

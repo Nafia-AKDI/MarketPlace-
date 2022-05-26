@@ -1,0 +1,393 @@
+<section id="home" class=" owl-carousel owl-theme home-slider">
+
+    <div class="slide item">
+
+        <div class="content text-center text-md-left pl-md-5 ml-md-5">
+            <h1>nike's shoes</h1>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas unde excepturi saepe sit optio odit recusandae nesciunt doloremque nulla velit?</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <h3 class="price">₹600/-</h3>
+            <a><button>add to cart <i class="fas fa-shopping-cart"></i></button></a>
+        </div>
+
+        <div class="image">
+            <img src="assets/images//shoe3.png" alt="" style="transform:rotate(35deg)">
+        </div>
+
+    </div>
+
+    <div class="slide item">
+
+        <div class="content text-center text-md-left pl-md-5 ml-md-5">
+            <h1>women's shoes</h1>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas unde excepturi saepe sit optio odit recusandae nesciunt doloremque nulla velit?</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <h3 class="price">₹1,300/-</h3>
+            <a href="#"><button>add to cart <i class="fas fa-shopping-cart"></i></button></a>
+        </div>
+
+        <div class="image">
+            <img src="assets/images//cloth1.png" alt="">
+        </div>
+
+    </div>
+
+    <div class="slide item">
+
+        <div class="content text-center text-md-left pl-md-5 ml-md-5">
+            <h1>Watch 1</h1>
+            <p>Montre EMPORIO ARMANI Pour Homme, AR1974</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <h3 class="price">400 DH</h3>
+            <a href="#"><button>add to cart <i class="fas fa-shopping-cart"></i></button></a>
+        </div>
+
+        <div class="image">
+            <img src="assets/images//watch4.png" alt="">
+        </div>
+
+    </div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- product section starts  -->
+
+<section id="product">
+    <h1 class="heading">products</h1>
+    <div *ngIf="shirts" class="product-container">
+        <h2 class="title">Shirts</h2>
+        <div class="product-slider owl-carousel owl-theme">
+            <div *ngFor="let p of products" style="display: inline-block;padding: 7px;">
+
+                <div *ngIf="p.categorie==='Shirts'">
+                    <div class="product-card item">
+
+                        <div class="image">
+                            <img src="{{p.image}}" alt="">
+                        </div>
+
+                        <div class="content">
+                            <h3>{{p.nom}}</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <div class="price">{{p.prix}}</div>
+                        </div>
+                        <div class="info">
+                            <h4>product info</h4>
+                            <p>{{p.description}}</p>
+                            <a (click)='add(p.id)'><button>add to cart</button></a>
+                            <div class="share">
+                                <a href="#" class="fab fa-facebook-f"></a>
+                                <a href="#" class="fab fa-twitter"></a>
+                                <a href="#" class="fab fa-instagram"></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="watches" class="product-container">
+        <h2 class="title">watches</h2>
+
+        <div class="product-slider owl-carousel owl-theme">
+
+            <div *ngFor="let p of products" style="display: inline-block;padding: 7px;">
+                <div *ngIf="p.categorie ==='Watches'">
+                    <div class="product-card item">
+                        <div class="image">
+                            <img src="{{p.image}}" alt="hh">
+                        </div>
+                        <div class="content">
+                            <h3>{{p.nom}}</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <div class="price">{{p.prix}}</div>
+                        </div>
+                        <div class="info">
+                            <h4>product info</h4>
+                            <p>{{p.description}}</p>
+                            <a (click)='add(p.id)'><button>add to cart</button></a>
+                            <div class="share">
+                                <a href="#" class="fab fa-facebook-f"></a>
+                                <a href="#" class="fab fa-twitter"></a>
+                                <a href="#" class="fab fa-instagram"></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="smartphones " class=" product-container ">
+        <h2 class="title ">smartphones</h2>
+        <div class="product-slider owl-carousel owl-theme ">
+            <div *ngFor="let p of products" style="display: inline-block;padding: 7px; ">
+                <div *ngIf="p.categorie==='smartphones'">
+                    <div class="product-card item ">
+
+                        <div class="image">
+                            <img src="{{p.image}} " alt=" ">
+                        </div>
+
+                        <div class="content ">
+                            <h3>{{p.nom}}</h3>
+                            <div class="stars ">
+                                <i class="fas fa-star "></i>
+                                <i class="fas fa-star "></i>
+                                <i class="fas fa-star "></i>
+                                <i class="fas fa-star "></i>
+                                <i class="fas fa-star-half-alt "></i>
+                            </div>
+                            <div class="price ">{{p.prix}}</div>
+                        </div>
+
+                        <div class="info ">
+                            <h4>product info</h4>
+                            <p>{{p.description}}</p>
+                            <a (click)='add(p.id)'><button>add to cart</button></a>
+                            <div class="share ">
+                                <a href="# " class="fab fa-facebook-f "></a>
+                                <a href="# " class="fab fa-twitter "></a>
+                                <a href="# " class="fab fa-instagram "></a>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- women's cloths  -->
+
+    <div *ngIf="shoes" class="product-container ">
+        <h2 class="title ">Shoes</h2>
+        <div class="product-slider owl-carousel owl-theme ">
+            <div *ngFor="let p of products" style="display: inline-block;padding: 7px; ">
+                <div *ngIf="p.categorie==='shoes'">
+                    <div class="product-card item ">
+                        <div class="image ">
+                            <img src="{{p.image}}" alt=" ">
+                        </div>
+                        <div class="content ">
+                            <h3>{{p.nom}}</h3>
+                            <div class="stars ">
+                                <i class="fas fa-star "></i>
+                                <i class="fas fa-star "></i>
+                                <i class="fas fa-star "></i>
+                                <i class="fas fa-star "></i>
+                                <i class="fas fa-star-half-alt "></i>
+                            </div>
+                            <div class="price ">{{p.prix}}</div>
+                        </div>
+
+                        <div class="info ">
+                            <h4>product info</h4>
+                            <p>{{p.description}}</p>
+                            <a (click)='add(p.id)'><button>add to cart</button></a>
+                            <div class="share ">
+                                <a href="# " class="fab fa-facebook-f "></a>
+                                <a href="# " class="fab fa-twitter "></a>
+                                <a href="# " class="fab fa-instagram "></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- smartphones  -->
+</section>
+<!-- product section ends -->
+<h1 class="heading"></h1>
+<h1 class="heading"></h1>
+<section id="review">
+
+    <div class="shape"></div>
+
+    <div class="heading">our customers review</div>
+
+    <div class="box-container">
+
+        <div class="review-slider owl-carousel owl-theme">
+
+            <div class="box item">
+
+                <div class="comment">
+                    <p><i class="fas fa-quote-left"></i>Un etudiant en cycle ingenieur dans la FST Tanger filiere LSI<i class="fas fa-quote-right"></i></p>
+                    <h3>EL KRISSI Achraf</h3>
+                </div>
+
+                <div class="image">
+                    <img src="assets/images/achraf.jpg" alt="">
+                </div>
+
+            </div>
+
+            <div class="box item">
+
+                <div class="comment">
+                    <p><i class="fas fa-quote-left"></i>Un etudiant en cycle ingenieur dans la FST Tanger filiere LSI<i class="fas fa-quote-right"></i></p>
+                    <h3>AKDI Nafia</h3>
+                </div>
+
+                <div class="image">
+                    <img src="assets/images/achraf.jpg" alt="">
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- offer/deal section starts  -->
+
+<section id="offer">
+
+    <div class="heading">deal of the day</div>
+
+
+
+    <div class="deal">
+
+        <div class="image">
+            <img src="assets/images/smartphone.png" alt="">
+        </div>
+
+        <div class="content">
+            <h4>smartphone</h4>
+            <p>upto 20% off on first shopping</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price">₹8,000/-</div>
+            <a href="#"><button>add to cart</button></a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- offer/deal section ends -->
+
+<!-- brand section  -->
+
+<div id="brand">
+
+    <div class="brand-slider owl-carousel owl-theme">
+        <img src="assets/images/brand1.png" alt="" class="item">
+        <img src="assets/images/brand2.png" alt="" class="item">
+        <img src="assets/images/brand3.png" alt="" class="item">
+        <img src="assets/images/brand4.jpg" alt="" class="item">
+        <img src="assets/images/brand5.png" alt="" class="item">
+        <img src="assets/images/brand6.jpg" alt="" class="item">
+        <img src="assets/images/brand7.png" alt="" class="item">
+    </div>
+
+</div>
+
+<!-- newsletter section starts  -->
+
+<section id="newsletter">
+
+    <h1>newsletter</h1>
+    <p>subscribe us for latest updates</p>
+    <input type="text" placeholder="subscribe"><br>
+    <input type="submit" value="subscribe">
+
+</section>
+
+<!-- newsletter section ends -->
+
+
+<!-- footer section starts  -->
+
+
+
+<!-- footer section ends -->
+
+<!-- inserting javascript -->
+<section id="footer" class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-md-4 text-center brand-info">
+            <a href="#" class="logo"><i class="fas fa-shopping-bag"></i><h3>shopping</h3></a>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti iure, sed ipsum magnam aperiam quas? Nesciunt atque id ipsam neque.</p>
+        </div>
+
+        <div class="col-md-4 text-center links">
+            <h3>links</h3>
+            <div class="nav-links">
+                <a href="#home">home</a>
+                <a href="#product">product</a>
+                <a href="#review">review</a>
+                <a href="#offer">offer</a>
+                <a href="#newsletter">newsletter</a>
+            </div>
+        </div>
+
+        <div class="col-md-3 text-center follow-us">
+            <h3>follow us</h3>
+            <div class="follow-us-links">
+                <a href="#">facebook</a>
+                <a href="#">twitter</a>
+                <a href="#">instagram</a>
+                <a href="#">pinterest</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="credit text-center">&copy; copyright @ 2022 by <span>Etudiants LSI FST Tanger</span></div>
+
+</section>

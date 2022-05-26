@@ -1,0 +1,50 @@
+<section id="product">
+
+    <h1 class="heading">Mon Panier</h1>
+
+    <div class="product-container">
+
+
+
+        <div class="product-slider owl-carousel owl-theme">
+
+            <div *ngFor="let p of products">
+                <div class="product-card item">
+
+                    <div class="image">
+                        <img src="{{p.image}}" alt="">
+                    </div>
+
+                    <div class="content">
+                        <h3>{{p.nom}}</h3>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="price">{{p.prix}}</div>
+                    </div>
+
+                    <div class="info">
+
+                        <h4>product info</h4>
+                        <p>{{p.description}}</p>
+                        <a (click)="delete(p.id)"><button>destroy</button></a>
+                        <div class="share">
+                            <a href="#" class="fab fa-facebook-f"></a>
+                            <a href="#" class="fab fa-twitter"></a>
+                            <a href="#" class="fab fa-instagram"></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</section>
